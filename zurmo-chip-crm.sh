@@ -20,7 +20,7 @@ sudo apt-get install apache2 mysql-server php5 php5-mysql php5-curl php5-mcrypt 
 # If Apt-Get fails to run completely the rest of this isn't going to work...
 if [ $? != 0 ]
 then
-    echo "apt-get failed to install all required dependencies. Are you on CHIP 4.4 Headless?"
+    echo "Make sure to run: sudo apt-get update && sudo apt-get upgrade"
     exit
 fi
 
