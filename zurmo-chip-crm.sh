@@ -6,6 +6,20 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+# Clear the screen
+reset
+
+# Start info
+echo "+-----------------------------------------------------------+"
+echo "|                   CHOOSE A NEW HOSTNAME                   |"
+echo "| If you want to keep chip as your hostname just type chip  |"
+echo "|  Be avare that using chip as hostname can cause problems  |"
+echo "|   if you have more than 1 chip connected to you network   |"
+echo "+-----------------------------------------------------------+"
+
+# Choose a new host name
+read -p "Choose your new host name: " hostname_new
+
 # Grab a password for MySQL Root
 read -s -p "Enter the password that will be used for MySQL Root: " mysqlrootpassword
 debconf-set-selections <<< "mysql-server mysql-server/root_password password $mysqlrootpassword"
