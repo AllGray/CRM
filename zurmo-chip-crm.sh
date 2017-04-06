@@ -52,3 +52,16 @@ flush privileges;"
 # Execute SQL Code
 echo $SQLCODE | mysql -u root -p$mysqlrootpassword
 
+# Finishing up
+echo "+---------------------------------------------------------------------+"
+echo "|                         Congratulation!                             |"
+echo "|                      Your install is done.                          |"
+echo "| You can now access http://your.local.ip.address from your browser   |"
+echo "|                       To finish your setup                          |"
+echo "|                                                                     |"
+echo "|                                                                     |"
+echo "|                                                                     |"
+echo "|                                                                     |"
+echo "|                                                                     |"
+echo "|            This installer was brought to you buy AllGray            |"
+echo "+---------------------------------------------------------------------+"
