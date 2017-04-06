@@ -52,6 +52,9 @@ flush privileges;"
 # Execute SQL Code
 echo $SQLCODE | mysql -u root -p$mysqlrootpassword
 
+# Clear screen
+reset
+
 # Finishing up
 echo "+---------------------------------------------------------------------+"
 echo "|                         Congratulation!                             |"
