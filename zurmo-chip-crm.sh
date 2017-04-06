@@ -20,6 +20,11 @@ echo "+-----------------------------------------------------------+"
 # Choose a new host name
 read -p "Choose your new host name: " hostname_new
 
+# Setup hostname
+read -r hostname_old < /etc/hostname
+sed -i "s/$hostname_old/$hostname_new/g" /etc/hostname
+sed -i "s/$hostname_old/$hostname_new/g" /etc/hosts
+
 # Grab a password for MySQL Root
 read -s -p "Enter the password that will be used for MySQL Root: " mysqlrootpassword
 debconf-set-selections <<< "mysql-server mysql-server/root_password password $mysqlrootpassword"
@@ -73,12 +78,27 @@ reset
 echo "+---------------------------------------------------------------------+"
 echo "|                         Congratulation!                             |"
 echo "|                      Your install is done.                          |"
-echo "| You can now access http://your.local.ip.address from your browser   |"
-echo "|                      To finish your setup                           |"
+echo "|                 Your HOSTNAME is $hostname_new                      |"
+echo "|          If you don't have Bonjour/Netatalk installed               |"
+echo "|             Head over to http://your.local.ip/zurmo                 |"
 echo "|                                                                     |"
+echo "|            if you DO have Bonjour/Netatalk installed                |"
+echo "|          Head over to http://$hostname_new.local/zurmo              |"
+echo "|                       To finish your setup                          |"
 echo "|                                                                     |"
+echo "| Database Hostname:    localhost                                     |"
+echo "| Database Port:        3306                                          |"
+echo "| Database Name:        zurmo                                         |"
+echo "| Remove Existing Data: (*)                                           |"
+echo "| Database Username:    root                                          |"
+echo "| Database Password:    $zurmodbuserpassword                          |"
+echo "| Super User Password:  Pick your poison                              |"
+echo "| Memcache Hostname:    127.0.0.1                                     |"
+echo "| Memcashe Port Number: 11211                                         |"
+echo "| Host Info:            http://your.local.ip.address                  |"
+echo "| Script URL:           /zurmo/app/index.php                          |"
 echo "|                                                                     |"
-echo "|                                                                     |"
+echo "|                    Leave everything else blank!!                    |"
 echo "|                                                                     |"
 echo "|            This installer was brought to you by AllGray!            |"
 echo "+---------------------------------------------------------------------+"
