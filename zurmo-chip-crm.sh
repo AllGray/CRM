@@ -34,17 +34,17 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password_again passwo
 read -s -p "Enter the password that will be used for the zurmo database: " zurmodbuserpassword
 
 # Install Features
-sudo apt-get install apache2 mysql-server php5 php5-mysql php5-curl php5-mcrypt php5-imap php5-ldap php5-memcache php5-apcu memcached
+sudo apt -y install apache2 mysql-server php5 php5-mysql php5-curl php5-mcrypt php5-imap php5-ldap php5-memcache php5-apcu memcached
 
 # If Apt-Get fails to run completely the rest of this isn't going to work...
 if [ $? != 0 ]
 then
-    echo "Make sure to run: sudo apt-get update && sudo apt-get upgrade"
+    echo "Make sure to run: sudo apt update && sudo apt upgrade"
     exit
 fi
 
 # Download Zurmo Files
-curl http://build.zurmo.com/downloads/zurmo-stable-3.2.1.57987acc3018.tar.gz | tar -C /var/www/html/ -xz
+curl http://build.zurmo.com/downloads/zurmo-stable-3.2.4.01254e9117e1.tar.gz | tar -C /var/www/html/ -xz
 
 
 # Make Changes to the PHP 
